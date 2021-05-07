@@ -1,35 +1,21 @@
 
+import { Screen } from './pantalla.class.js';
+import { Keyboard } from './teclado.class.js';
+
+
 export class ATM {
   
-  constructor() {
-    this.cash = [];
-    this.aviable = 0;
-    this.createVirtualATM();
-    this.addKeyboardEvent();
-  }
-
-  buildCash(typesOfCash) {
+  constructor(typesOfCash) {
     this.cash = typesOfCash;
+    this.aviable = 0;
+    this.cashAviable()
+    this.createVirtualATM();
   }
 
   createVirtualATM() {
     this.withdrawal = document.querySelector("#withdrawal");
-    this.keyboard = document.querySelector("#keyboard");
-    this.screen = document.querySelector("#screen");
-  }
-
-  addKeyboardEvent() {
-    this.keyboard.addEventListener('click', this.detectButtonClicked);
-  }
-
-  removeKeyboardEvent() {
-    this.keyboard.removeEventListener('click', this.detectButtonClicked);
-  }
-
-  detectButtonClicked(e) {
-    if (e.target.dataset.value) {
-      console.log(e.target.dataset.value);
-    }
+    this.keyboard = new Keyboard('keyboard', this);
+    this.screen = new Screen('screen', this);
   }
 
   cashAviable() {
