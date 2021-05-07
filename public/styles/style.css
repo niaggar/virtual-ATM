@@ -16,9 +16,9 @@
 }
 
 
-/*  CAJERO
+/*  atm
  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  */
-.cajero {
+.atm {
   padding: 20px;
   display: flex;
   flex-direction: row;
@@ -31,7 +31,7 @@
 
 /*  PANTALLA
 *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  */
-.cajero__pantalla {
+.atm__pantalla {
   width: 500px;
   height: 500px;
   background: #212cca;
@@ -46,9 +46,9 @@
 }
 
 
-/*  CAJERO DERECHA
+/*  atm DERECHA
 *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  */
-.cajero__fisico {
+.atm__fisico {
   display: flex;
   flex-direction: column;
   position: relative;
@@ -58,7 +58,7 @@
   justify-content: space-around;
 }
 
-.cajero__teclado {
+.atm__teclado {
   display: grid;
   grid-template-columns: 0.5fr 0.5fr 0.5fr 1fr;
   gap: 5px;
@@ -67,13 +67,13 @@
   height: 215px;
 }
 
-.cajero__retirar-dinero {
+.atm__retirar-dinero {
   height: 250px;
   width: 100%;
   position: relative;
 }
 
-.cajero__rendija {
+.atm__rendija {
   width: 100%;
   height: 10px;
   border-radius: 5px;
@@ -84,20 +84,20 @@
   visibility: hidden;
 }
 
-/*  CAJERO BOTON
+/*  atm BOTON
 *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  */
-.cajero__teclado-num {
+.atm__teclado-num {
   width: 50px;
   height: 50px;
 }
 
-.cajero__teclado-accion {
+.atm__teclado-accion {
   width: 80px;
   height: 50px;
 }
 
-.cajero__btn,
-.cajero__btn-accion {
+.atm__btn,
+.atm__btn-accion {
   width: 100%;
   height: 100%;
   background: #e2e2e2;
@@ -112,20 +112,20 @@
     inset 0 0 0 #000000;
 }
 
-.cajero__btn-accion {
+.atm__btn-accion {
   background: #aaaaaa;
 }
 
-.cajero__btn:hover,
-.cajero__btn-accion:hover {
+.atm__btn:hover,
+.atm__btn-accion:hover {
   font-size: 0.8em;
   box-shadow: 
     0 0 2px #000000,
     inset 0 0 5px #000000a9;
 }
 
-.cajero__btn:active,
-.cajero__btn-accion:active {
+.atm__btn:active,
+.atm__btn-accion:active {
   font-size: 0.7em;
   background: #d5e7ff;
   box-shadow: 
@@ -133,6 +133,6 @@
     inset 0 0 10px #000000a9;
 }
 
-.cajero__teclado-dir {
+.atm__teclado-dir {
   background: #aaaaaa;
 }
