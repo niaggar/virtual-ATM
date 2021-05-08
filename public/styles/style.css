@@ -100,6 +100,17 @@
 
 /*  atm DERECHA
 *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  */
+.pantalla__cont-retirar {
+  text-align: center;
+}
+
+.pantalla__cant-deseada {
+  margin-top: 15px;
+}
+
+
+/*  atm DERECHA
+*  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  */
 .atm__fisico {
   display: flex;
   flex-direction: column;

@@ -1,14 +1,24 @@
 
 import { Screen } from './pantalla.class.js';
 import { Keyboard } from './teclado.class.js';
+import { Cash } from './billete.class.js';
 
 
 export class ATM {
   
   constructor(typesOfCash) {
-    this.cash = typesOfCash;
+    this.cash = typesOfCash || [
+      new Cash(100000, 5),
+      new Cash(50000, 5),
+      new Cash(20000, 5),
+      new Cash(10000, 5),
+      new Cash(5000, 5),
+      new Cash(2000, 5),
+      new Cash(1000, 5),
+    ];
     this.aviable = 0;
-    this.cashAviable()
+    this.state = 'main';
+    this.cashAviable();
     this.createVirtualATM();
   }
 
@@ -55,6 +65,8 @@ export class ATM {
     } else {
       console.log('Mmmm we can\'t give you all');
     }
+    this.screen.updateBalance();
+    console.log(moneyToGive);
     return moneyToGive;
   }
 
