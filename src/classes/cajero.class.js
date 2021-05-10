@@ -47,27 +47,40 @@ export class ATM {
         // Si los billetes necesarios son mayores a los disponibles
         // entrega unicamente los disponibles
         if (quatity > element.number) { quatity = element.number; }
-        // Agrega a la lista cuantos billetes toca entregar
-        moneyToGive.push({
-          value: element.value,
-          number: quatity,
-        });
-        // Resta a la caja el dinero que se piensa retirar
+        moneyToGive.push({ value: element.value, number: quatity });
         element.number -= quatity;
-        // Resta al dinero requerido el que ya se organizo
         required -= (element.value * quatity); 
       } else {
         console.log('We don\'t have more money :(');
       }
     });
-    if (required == 0) {
-      console.log('You are going to recive all!');
-    } else {
-      console.log('Mmmm we can\'t give you all');
-    }
+    
     this.screen.updateBalance();
-    console.log(moneyToGive);
-    return moneyToGive;
+
+    let space = 0;
+    moneyToGive.forEach(element => {
+      if (element.number > 0) {
+        for (let a = 1; a <= element.number; a++) {
+          this.renderRetireCash(element.value, space);
+          space += 5
+        }
+      }
+    });
+
+  }
+
+  renderRetireCash(quatity, space) {
+    const spaceToCash = document.querySelector('#money-space');
+
+    spaceToCash.innerHTML += `
+    <div style="left: ${space}px" class="billete" >
+      <div class="billete-sombra">
+        <h1 class="billete__value" id="valor">
+          $ ${quatity}
+        </h1>
+      </div>
+    </div>`
+
   }
 
 }

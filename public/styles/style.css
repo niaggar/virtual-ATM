@@ -113,7 +113,7 @@
 *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  */
 .atm__fisico {
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   position: relative;
   height: 100%;
   margin: 0 0 0 20px;
@@ -195,8 +195,39 @@
   box-shadow: 
     0 0 2px #000000,
     inset 0 0 10px #000000a9;
-}
+  }
 
 .atm__teclado-dir {
   background: #aaaaaa;
+}
+
+
+/*  BILLETE
+*  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  */
+.billete {
+  width: 220px;
+  height: 120px;
+  background: #46af46;
+  padding: 15px;
+  user-select: none;
+  box-shadow: 0 0 5px #00000086;
+  touch-action: none;
+  user-select: none;
+  position: absolute;
+}
+
+.billete-sombra {
+  width: 100%;
+  height: 100%;
+  background: #ffffff1a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.billete__value {
+  text-align: center;
+  color: #f2f2f2;
+  font-family: Georgia, 'Times New Roman', Times, serif;
 }

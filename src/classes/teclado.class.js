@@ -30,18 +30,19 @@ export class Keyboard {
   }
   
   detectButtonClicked(e) {
-    if (e.target.dataset.value == 'cancel') return this.ATM.screen.renderMainMenu();
+    let target = e.target.dataset.value;
+    if (target == 'cancel') return this.ATM.screen.renderMainMenu();
     switch (this.ATM.state) {
       case 'main':
-        this.detecButtonMainMenu(e.target.dataset.value);
+        this.detecButtonMainMenu(target);
         break;
     
       case 'retire':
-        this.detectButtonRetire(e.target.dataset.value);
+        this.detectButtonRetire(target);
         break;
 
       case 'recharge':
-        this.detectButtonRecharge(e.target.dataset.value);
+        this.detectButtonRecharge(target);
         break;
     }
   }
@@ -51,9 +52,11 @@ export class Keyboard {
       case 'der':
         this.ATM.screen.changeOption('recargar');
         break;
+
       case 'izq':
         this.ATM.screen.changeOption('retirar');
         break;
+        
       case 'enter':
         this.ATM.screen.changeOption('enter');
         break;
@@ -61,18 +64,23 @@ export class Keyboard {
   }
 
   detectButtonRetire(clicked) {
-    if (clicked == 'enter') {
-      this.ATM.screen.updateTxtRetireMoney(0);
-      this.ATM.retireCash(parseInt(this.numberToRetire));
-      this.numberToRetire = '';
-    } else if (clicked == 'delete') {
-      this.numberToRetire = this.numberToRetire.substring(0, this.numberToRetire.length - 1);
-      this.ATM.screen.updateTxtRetireMoney(this.numberToRetire);
-    } else if (!parseInt(clicked) && clicked != '0') {
-      return
-    } else {
-      this.numberToRetire += clicked;
-      this.ATM.screen.updateTxtRetireMoney(this.numberToRetire);
+    switch (clicked) {
+      case 'enter':
+        this.ATM.screen.updateTxtRetireMoney(0);
+        this.ATM.retireCash(parseInt(this.numberToRetire));
+        this.numberToRetire = '';
+        break;
+
+      case 'delete':
+        this.numberToRetire = this.numberToRetire.substring(0, this.numberToRetire.length - 1);
+        this.ATM.screen.updateTxtRetireMoney(this.numberToRetire);
+        break;
+    
+      default:
+        if (!parseInt(clicked) && clicked != '0') return
+        this.numberToRetire += clicked;
+        this.ATM.screen.updateTxtRetireMoney(this.numberToRetire);
+        break;
     }
   }
 
