@@ -141,12 +141,22 @@
   height: 10px;
   border-radius: 5px;
   background-color: #000000;
+  margin-bottom: 20px;
 }
 
 .ocultar {
   visibility: hidden;
 }
 
+.atm__dinero {
+  width: 100%;
+  height: 90%;
+  border-radius: 20px;
+}
+
+.atm__dinero-active {
+  background: #ffffff34;
+}
 
 /*  atm BOTON
 *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  */
@@ -230,4 +240,35 @@
   text-align: center;
   color: #f2f2f2;
   font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+
+/*  BILLETERA
+*  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  */
+.billetera {
+  background: #695226;
+  position: absolute;
+  left: 0;
+  width: 150px;
+  height: 450px;
+  border-radius: 0 20px 20px 0;
+  box-shadow: 0 0 20px #000000;
+  padding: 15px 15px 15px 0;
+}
+
+.billetera-active {
+  background: #af8941;
+}
+
+.billetera__rayas {
+  border: 2px solid #d8a23f;
+  border-radius: 0 15px 15px 0;
+  border-style: dashed;
+  width: max-content;
+  width: 100%;
+  height: 100%;
+}
+
+.billete-billetera {
+  position: relative;
 }

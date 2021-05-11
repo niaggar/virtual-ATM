@@ -8,7 +8,7 @@ const cajero = new ATM();
 
 interact('.billete')
   .draggable({
-    inertia: true,
+    // inertia: true,
     listeners: {
       // call this function on every dragmove event
       move: dragMoveListener,
@@ -19,7 +19,22 @@ interact('.billete')
         endOnly: true
       })
     ],
-  
+  })
+
+interact('.atm__dinero')
+  .dropzone({
+    accept: '.billete',
+    overlap: 0.75,
+    ondrop: function (event) {
+      // alert(event.relatedTarget.id + ' was dropped into ' + event.target.id);
+      event.relatedTarget.remove()
+    },
+    ondropactivate: function (event) {
+      event.target.classList.add('atm__dinero-active')
+    },
+    ondropdeactivate: function (event) {
+      event.target.classList.remove('atm__dinero-active')
+    }
   })
 
 function dragMoveListener (event) {

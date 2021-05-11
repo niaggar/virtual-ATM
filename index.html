@@ -9,23 +9,15 @@
 </head>
 <body>
 
-
   <div class="contenedor">
     <div class="atm">
-
       <div class="atm__pantalla" id="screen">
-        
       </div>
       
       <div class="atm__fisico">
-        
         <div class="atm__retirar-dinero">
           <div class="atm__rendija" id="withdrawal"></div>
-          <div class="atm__dinero" id="money-space">
-
-            
-
-          </div>
+          <div class="atm__dinero" id="money-space"></div>
         </div>
         
         <div class="atm__teclado" id="keyboard">
@@ -75,15 +67,33 @@
             <input data-value="der" type="button" class="atm__btn atm__teclado-dir" id="btn-der" value=">">
           </div>
         </div>
+      </div>
+    </div>
+
+    <div class="billetera" id="test">
+      <div class="billetera__rayas">
+
+        <div data-value="5000" class="billete billete-5000 billete-billetera" >
+          <div class="billete-sombra">
+            <h1 class="billete__value" id="valor">
+              $ 5.000
+            </h1>
+          </div>
+        </div>
+
+        <div data-value="10000" class="billete billete-10000 billete-billetera" >
+          <div class="billete-sombra">
+            <h1 class="billete__value" id="valor">
+              $ 10.000
+            </h1>
+          </div>
+        </div>
 
       </div>
-
     </div>
   </div>
 
-
   <script type="module" src="./src/app.js"></script>
-
 
 </body>
 </html>

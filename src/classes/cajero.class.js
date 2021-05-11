@@ -73,10 +73,14 @@ export class ATM {
     const spaceToCash = document.querySelector('#money-space');
 
     spaceToCash.innerHTML += `
-    <div style="left: ${space}px" class="billete" >
+    <div 
+      data-value="${quatity}" 
+      style="left: ${space}px" 
+      class="billete billete-${quatity}" 
+    >
       <div class="billete-sombra">
         <h1 class="billete__value" id="valor">
-          $ ${quatity}
+          $ ${Intl.NumberFormat().format(quatity)}
         </h1>
       </div>
     </div>`
