@@ -21,8 +21,6 @@ export class ATM {
     this.state = 'main';
     this.cashAviable();
     this.createVirtualATM();
-
-    console.log(this.cash);
   }
 
   createVirtualATM() {
@@ -80,8 +78,6 @@ export class ATM {
         if (c.value == cash.value) c.number += cash.number;
       })
     });
-
-    console.log(this.cash);
   }
 
 }
