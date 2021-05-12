@@ -42,7 +42,8 @@ export class Screen {
   renderMainMenu() {
     if (this.menuSelectedAnimation) clearInterval(this.menuSelectedAnimation);
     this.ATM.state = 'main';
-    this.ATM.keyboard.numberToRetire = ''
+    this.ATM.withdrawal.cashToEnter = [];
+    this.ATM.keyboard.numberToRetire = '';
     this.element.innerHTML = 
     `<div class="pantalla main-menu"> 
       ${this.renderBalance()}
@@ -61,6 +62,7 @@ export class Screen {
       </div>
     </div>`;
     this.addSelectedAnimation();
+    this.ATM.withdrawal.removeEventToAceptMoney();
   }
 
   addSelectedAnimation() {
@@ -105,10 +107,10 @@ export class Screen {
         clearInterval(this.menuSelectedAnimation);
         if (document.querySelector('.opcion__seleccionada').id == 'retirar') {
           this.ATM.state = 'retire';
-          this.renderRetireMoney()
+          this.renderRetireMoney();
         } else if (document.querySelector('.opcion__seleccionada').id == 'recargar') {
           this.ATM.state = 'recharge';
-          this.renderRechargeMoney()
+          this.renderRechargeMoney();
         }
         break;
     }
@@ -137,11 +139,28 @@ export class Screen {
   }
 
   renderRechargeMoney() {
+    this.ATM.withdrawal.addEventToAceptMoney()
     this.element.innerHTML = 
-    `<div class="pantalla main-menu">
-      Recharge:
+    `<div class="pantalla recargar">
       ${this.renderBalance()}
+      <div class="pantalla__cont-recargar">
+        <p class="pantalla__text pantalla__text-important">
+          Cantidad ingresada:
+        </p>
+        <p class="pantalla__text pantalla__sub-text">
+          ENTER - Continuar || CANCEL - Devolver
+        </p>
+        <div class="pantalla__cant-ingresar">
+          $ <span id="cantidad-ingresar">0</span>
+        </div>
+      </div>
     </div>`;
+  }
+
+  updateRechargeMoney(value) {
+    document
+      .querySelector('#cantidad-ingresar')
+      .innerHTML = Intl.NumberFormat().format(value);
   }
   
 }

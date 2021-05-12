@@ -2,6 +2,7 @@
 import { Screen } from './pantalla.class.js';
 import { Keyboard } from './teclado.class.js';
 import { Cash } from './billete.class.js';
+import { Withdrawal } from './rendija.class.js';
 
 
 export class ATM {
@@ -20,10 +21,12 @@ export class ATM {
     this.state = 'main';
     this.cashAviable();
     this.createVirtualATM();
+
+    console.log(this.cash);
   }
 
   createVirtualATM() {
-    this.withdrawal = document.querySelector("#withdrawal");
+    this.withdrawal = new Withdrawal('withdrawal', this);
     this.keyboard = new Keyboard('keyboard', this);
     this.screen = new Screen('screen', this);
   }
@@ -54,37 +57,31 @@ export class ATM {
         console.log('We don\'t have more money :(');
       }
     });
-    
     this.screen.updateBalance();
+    this.renderTheCash(moneyToGive);
+  }
 
+  renderTheCash(moneyToGive) {
     let space = 0;
     moneyToGive.forEach(element => {
       if (element.number > 0) {
         for (let a = 1; a <= element.number; a++) {
-          this.renderRetireCash(element.value, space);
+          this.withdrawal.renderRetireCash(element.value, space);
           space += 5
         }
       }
     });
-
   }
 
-  renderRetireCash(quatity, space) {
-    const spaceToCash = document.querySelector('#money-space');
+  updateCash(listOfCash) {
+    listOfCash.forEach((cash, index) => {
+      if (!cash.number) return;
+      this.cash.map((c) => {
+        if (c.value == cash.value) c.number += cash.number;
+      })
+    });
 
-    spaceToCash.innerHTML += `
-    <div 
-      data-value="${quatity}" 
-      style="left: ${space}px" 
-      class="billete billete-${quatity}" 
-    >
-      <div class="billete-sombra">
-        <h1 class="billete__value" id="valor">
-          $ ${Intl.NumberFormat().format(quatity)}
-        </h1>
-      </div>
-    </div>`
-
+    console.log(this.cash);
   }
 
 }

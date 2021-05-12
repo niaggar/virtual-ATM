@@ -31,7 +31,6 @@ export class Keyboard {
   
   detectButtonClicked(e) {
     let target = e.target.dataset.value;
-    if (target == 'cancel') return this.ATM.screen.renderMainMenu();
     switch (this.ATM.state) {
       case 'main':
         this.detecButtonMainMenu(target);
@@ -60,6 +59,10 @@ export class Keyboard {
       case 'enter':
         this.ATM.screen.changeOption('enter');
         break;
+      
+      case 'cancel':
+        this.ATM.screen.renderMainMenu();
+        break;
     }
   }
 
@@ -75,6 +78,10 @@ export class Keyboard {
         this.numberToRetire = this.numberToRetire.substring(0, this.numberToRetire.length - 1);
         this.ATM.screen.updateTxtRetireMoney(this.numberToRetire);
         break;
+
+      case 'cancel':
+        this.ATM.screen.renderMainMenu();
+        break;
     
       default:
         if (!parseInt(clicked) && clicked != '0') return
@@ -84,6 +91,21 @@ export class Keyboard {
     }
   }
 
-  detectButtonRecharge() {}
+  detectButtonRecharge(clicked) {
+    switch (clicked) {
+      case 'enter':
+        this.ATM.updateCash(this.ATM.withdrawal.cashToEnter);
+        this.ATM.withdrawal.cashToEnter = [];
+        this.ATM.screen.updateRechargeMoney(0);
+        this.ATM.cashAviable();
+        this.ATM.screen.updateBalance();
+        break;
+
+      case 'cancel':
+        this.ATM.renderTheCash(this.ATM.withdrawal.cashToEnter);
+        this.ATM.screen.renderMainMenu();
+        break;
+    }
+  }
 
 }

@@ -64,6 +64,10 @@
   font-weight: bold;
 }
 
+.pantalla__text {
+  text-align: center;
+}
+
 
 /*  PANTALLA MAIN-MENU
 *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  */
@@ -96,6 +100,24 @@
 .titilar {
   border-bottom: none;
 }
+
+/*  PANTALLA RECHARGE
+*  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  */
+.pantalla__cont-recargar {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.pantalla__sub-text {
+  font-size: 15px;
+}
+
+.pantalla__cant-ingresar {
+  margin-top: 15px;
+}
+
 
 
 /*  atm DERECHA
@@ -224,6 +246,7 @@
   touch-action: none;
   user-select: none;
   position: absolute;
+  z-index: 999;
 }
 
 .billete-sombra {
@@ -250,7 +273,7 @@
   position: absolute;
   left: 0;
   width: 150px;
-  height: 450px;
+  height: 600px;
   border-radius: 0 20px 20px 0;
   box-shadow: 0 0 20px #000000;
   padding: 15px 15px 15px 0;
@@ -270,5 +293,5 @@
 }
 
 .billete-billetera {
-  position: relative;
+  position: absolute;
 }
